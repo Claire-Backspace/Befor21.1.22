@@ -242,7 +242,7 @@ void smallcola(Mat& clo3)
 	Point2f p1[4];
 	box1.points(p1);
 	//rectangle(src, p1[0], p1[2], Scalar(77, 255, 255));
-	p1[0].y;//÷–œﬂµ◊
+	p1[0].y;//√ñ√ê√è√ü¬µ√ó
 
 	Mat clo3_2 = clo.clone();
 	Mat clo3_2Hsv;
@@ -261,7 +261,7 @@ void smallcola(Mat& clo3)
 	Point2f p2[4];
 	box2.points(p2);
 	//rectangle(src, p2[1], p2[2], Scalar(77, 255, 255));
-	//p2[1].∂•
+	//p2[1].¬∂¬•
 
 	Mat clo3_3 = clo.clone();
 	Mat clo3_3HSV;
