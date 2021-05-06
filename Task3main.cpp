@@ -53,15 +53,21 @@ int main()
 	srce[7] = src(Rect(0, h / 3 * 2, w / 3, h / 3));
 	srce[8] = src(Rect(w / 3, h / 3 * 2, w / 3, h / 3));
 	srce[9] = src(Rect(w / 3 * 2, h / 3 * 2, w / 3, h / 3));
-
+/*
+Rect(int _x,int _y,int _width,int _height);
+å‚æ•°æ„æ€ä¸ºï¼šå·¦ä¸Šè§’xåæ ‡
+å·¦ä¸Šè§’yåæ ‡
+çŸ©å½¢çš„å®½
+çŸ©å½¢çš„é«˜
+*/
 	putText(src, "tern", Point(300, 500), FONT_HERSHEY_SIMPLEX, 10.0, Scalar(125, 0, 0), 30, 8, false);
 	//createTrackbar("modle", WINDOW_NAME, &ThresholdType, 4, thres);
 	//createTrackbar("modle", WINDOW_NAME, &ThresholdValue, 255, thres);
 	//thres();
 
-	namedWindow("¾Å¹¬¸ñ");
+	namedWindow("ä¹å®«æ ¼");
 
-	imshow("¾Å¹¬¸ñ", combine);
+	imshow("ä¹å®«æ ¼", combine);
 	waitKey(0);
 
 	return 0;
@@ -85,20 +91,20 @@ void jugement(int arr[]);
 int print_px_value(Mat& im)
 {
     int counter = 0;
-    int rowNumber = im.rows;  //ĞĞÊı
-    int colNumber = im.cols * im.channels();  //ÁĞÊı x Í¨µÀÊı=Ã¿Ò»ĞĞÔªËØµÄ¸öÊı
+    int rowNumber = im.rows;  //è¡Œæ•°
+    int colNumber = im.cols * im.channels();  //åˆ—æ•° x é€šé“æ•°=æ¯ä¸€è¡Œå…ƒç´ çš„ä¸ªæ•°
 
-    //Ë«ÖØÑ­»·£¬±éÀúËùÓĞµÄÏñËØÖµ
-    for (int i = 0; i < rowNumber; i++)  //ĞĞÑ­»·
+    //åŒé‡å¾ªç¯ï¼Œéå†æ‰€æœ‰çš„åƒç´ å€¼
+    for (int i = 0; i < rowNumber; i++)  //è¡Œå¾ªç¯
     {
-        uchar* data = im.ptr<uchar>(i);  //»ñÈ¡µÚiĞĞµÄÊ×µØÖ·
-        for (int j = 0; j < colNumber; j++)   //ÁĞÑ­»·
+        uchar* data = im.ptr<uchar>(i);  //è·å–ç¬¬iè¡Œçš„é¦–åœ°å€
+        for (int j = 0; j < colNumber; j++)   //åˆ—å¾ªç¯
         {
             //data[j] = data[j] / div * div + div / 2;
             //cout << (int)data[j] << endl;
             if (data[j] == 0) counter += 1;
 
-        }  //ĞĞ´¦Àí½áÊø
+        }  //è¡Œå¤„ç†ç»“æŸ
     }
     //cout<<counter<<endl;
     return counter;
@@ -107,7 +113,7 @@ Mat src = imread("D:/(C)(C++)/TaskImage/3/47.jpg", 0);
 Mat element = getStructuringElement(MORPH_RECT, Size(15, 15));
 int main()
 {
-    double t = (double)cv::getTickCount();//¿ªÊ¼¼ÆÊ±
+    double t = (double)cv::getTickCount();//å¼€å§‹è®¡æ—¶
     resize(src, src, Size(640, 480));
     Mat clone_image = src.clone();
     threshold(clone_image, clone_image, 90, 255, THRESH_BINARY);
@@ -165,9 +171,9 @@ int main()
     */
 
     //cout << arr[6] << endl;
-    t = ((double)cv::getTickCount() - t) / cv::getTickFrequency();//½áÊø¼ÆÊ±
-    int fps = int(1.0 / t);//×ª»»ÎªÖ¡ÂÊ
-    cout << "FPS: " << fps << endl;//Êä³öÖ¡ÂÊ
+    t = ((double)cv::getTickCount() - t) / cv::getTickFrequency();//ç»“æŸè®¡æ—¶
+    int fps = int(1.0 / t);//è½¬æ¢ä¸ºå¸§ç‡
+    cout << "FPS: " << fps << endl;//è¾“å‡ºå¸§ç‡
     jugement(arr);
     return 0;
 }
